@@ -11,8 +11,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
 
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public Guid AuthorId { get; set; }
-    public Guid CategoryId { get; set; }
+    public Guid? AuthorId { get; set; }
     public string Description { get; set; }
     public bool IsActive { get; set; }
     public Guid CreatedBy { get; set; }
@@ -27,6 +26,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
 
     public DbBook()
     {
+      Reviews = new HashSet<DbReview>();
       Files = new HashSet<DbBookFile>();
       Categories = new HashSet<DbBookCategory>();
     }
@@ -39,31 +39,27 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
         .ToTable(DbBook.TableName);
 
       builder
-          .Property(a => a.Name)
-          .IsRequired();
-
-      builder
-          .Property(a => a.Description)
-          .IsRequired();
+        .Property(b => b.Name)
+        .IsRequired();
 
       builder
         .HasKey(b => b.Id);
 
       builder
-        .HasOne(a => a.Author)
-        .WithMany(b => b.Books);
+        .HasOne(b => b.Author)
+        .WithMany(a => a.Books);
 
       builder
-        .HasMany(r => r.Reviews)
-        .WithOne(b => b.Book);
+        .HasMany(b => b.Reviews)
+        .WithOne(r => r.Book);
 
       builder
-        .HasMany(u => u.Categories)
-        .WithOne(u => u.Book);
+        .HasMany(b => b.Categories)
+        .WithOne(bc => bc.Book);
 
       builder
-        .HasMany(u => u.Files)
-        .WithOne(u => u.Book);
+        .HasMany(b => b.Files)
+        .WithOne(bf => bf.Book);
     }
   }
 }

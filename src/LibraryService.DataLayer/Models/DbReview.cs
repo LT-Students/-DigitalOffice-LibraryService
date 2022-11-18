@@ -26,15 +26,15 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
           .ToTable(DbReview.TableName);
 
         builder
-          .Property(r => r.Content)
+          .Property(c => c.Content)
           .IsRequired();
 
         builder
-          .HasKey(r => r.Id);
+          .HasKey(c => c.Id);
 
         builder
-          .HasOne(b => b.Book)
-          .WithMany(r => r.Reviews);
+          .HasOne(r => r.Book)
+          .WithMany(b => b.Reviews);
       }
     }
   }

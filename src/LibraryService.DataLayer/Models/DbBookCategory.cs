@@ -11,6 +11,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
     public Guid Id { get; set; }
     public Guid BookId { get; set; }
     public Guid CategoryId { get; set; }
+    public bool IsActive { get; set; }
     public Guid CreatedBy { get; set; }
     public DateTime CreatedAtUtc { get; set; }
     public Guid? ModifiedBy { get; set; }
@@ -30,12 +31,12 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
           .HasKey(bc => bc.Id);
 
         builder
-          .HasOne(b => b.Book)
-          .WithMany(bc => bc.Categories);
+          .HasOne(bc => bc.Book)
+          .WithMany(b => b.Categories);
 
         builder
-          .HasOne(c => c.Category)
-          .WithMany(bc => bc.Books);
+          .HasOne(bc => bc.Category)
+          .WithMany(c => c.Books);
       }
     }
   }

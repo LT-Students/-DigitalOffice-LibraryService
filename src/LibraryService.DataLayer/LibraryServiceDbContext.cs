@@ -12,7 +12,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer
     public DbSet<DbCategory> Categories { get; set; }
     public DbSet<DbReview> Reviews { get; set; }
     public DbSet<DbBookCategory> BooksCategories { get; set; }
-    public DbSet<DbBookFile> DbBooksFiles { get; set; }
+    public DbSet<DbBookFile> BooksFiles { get; set; }
 
     public LibraryServiceDbContext(DbContextOptions<LibraryServiceDbContext> options)
       : base(options)

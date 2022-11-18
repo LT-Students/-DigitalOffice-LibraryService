@@ -37,16 +37,12 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
           .HasKey(a => a.Id);
 
         builder
-          .Property(a => a.FirstName)
+          .Property(a => a.LastName)
           .IsRequired();
 
         builder
-          .Property(o => o.LastName)
-          .IsRequired();
-
-        builder
-          .HasMany(b => b.Books)
-          .WithOne(a => a.Author);
+          .HasMany(a => a.Books)
+          .WithOne(b => b.Author);
       }
     }
 

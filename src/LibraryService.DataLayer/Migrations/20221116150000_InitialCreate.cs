@@ -18,7 +18,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         columns: table => new
         {
           Id = table.Column<Guid>(nullable: false),
-          FirstName = table.Column<string>(nullable: false),
+          FirstName = table.Column<string>(nullable: true),
           MiddleName = table.Column<string>(nullable: true),
           LastName = table.Column<string>(nullable: false),
           IsActive = table.Column<bool>(nullable: false),
@@ -41,9 +41,8 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         {
           Id = table.Column<Guid>(nullable: false),
           Name = table.Column<string>(nullable: false),
-          AuthorId = table.Column<Guid>(nullable: false),
-          CategoryId = table.Column<Guid>(nullable: false),
-          Description = table.Column<string>(nullable: false),
+          AuthorId = table.Column<Guid>(nullable: true),
+          Description = table.Column<string>(nullable: true),
           IsActive = table.Column<bool>(nullable: false),
           CreatedBy = table.Column<Guid>(nullable: false),
           CreatedAtUtc = table.Column<DateTime>(nullable: false),
@@ -104,6 +103,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
           Id = table.Column<Guid>(nullable: false),
           BookId = table.Column<Guid>(nullable: false),
           CategoryId = table.Column<Guid>(nullable: false),
+          IsActive = table.Column<bool>(nullable: false),
           CreatedBy = table.Column<Guid>(nullable: false),
           CreatedAtUtc = table.Column<DateTime>(nullable: false),
           ModifiedBy = table.Column<Guid>(nullable: true),
@@ -123,7 +123,8 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         {
           Id = table.Column<Guid>(nullable: false),
           BookId = table.Column<Guid>(nullable: false),
-          FileId = table.Column<Guid>(nullable: false)
+          FileId = table.Column<Guid>(nullable: false),
+          IsActive = table.Column<bool>(nullable: false),
         },
         constraints: table =>
         {
@@ -142,6 +143,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
       CreateReviewsTable(migrationBuilder);
 
       CreateCategoriesTable(migrationBuilder);
+
       CreateBooksCategoriesTable(migrationBuilder);
 
       CreateBooksFilesTable(migrationBuilder);
@@ -156,6 +158,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
       migrationBuilder.DropTable(DbReview.TableName);
 
       migrationBuilder.DropTable(DbCategory.TableName);
+
       migrationBuilder.DropTable(DbBookCategory.TableName);
 
       migrationBuilder.DropTable(DbBookFile.TableName);

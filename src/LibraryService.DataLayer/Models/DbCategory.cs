@@ -31,15 +31,15 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
           .ToTable(DbCategory.TableName);
 
         builder
-          .HasKey(o => o.Id);
+          .HasKey(c => c.Id);
 
         builder
-          .Property(o => o.Name)
+          .Property(c => c.Name)
           .IsRequired();
 
         builder
-          .HasMany(o => o.Books)
-          .WithOne(u => u.Category);
+          .HasMany(c => c.Books)
+          .WithOne(b => b.Category);
       }
     }
   }
