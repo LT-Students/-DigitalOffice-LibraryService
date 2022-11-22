@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.LibraryService.DataLayer
 {
-  public class LibraryServiceDbContext :DbContext
+  public class LibraryServiceDbContext : DbContext
   {
     public DbSet<DbAuthor> Authors { get; set; }
     public DbSet<DbBook> Books { get; set; }

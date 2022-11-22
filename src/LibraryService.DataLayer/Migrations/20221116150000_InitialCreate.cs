@@ -11,7 +11,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
   {
     #region Create tables
 
-    private void CreateAuthorsTable(MigrationBuilder migrationBuilder)
+    private void CreateTableAuthors(MigrationBuilder migrationBuilder)
     {
       migrationBuilder.CreateTable(
         name: DbAuthor.TableName,
@@ -32,7 +32,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         });
     }
 
-    private void CreateBooksTable(MigrationBuilder migrationBuilder)
+    private void CreateTableBooks(MigrationBuilder migrationBuilder)
     {
       migrationBuilder.CreateTable(
         name: DbBook.TableName,
@@ -40,7 +40,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         {
           Id = table.Column<Guid>(nullable: false),
           Name = table.Column<string>(nullable: false),
-          AuthorId = table.Column<Guid>(nullable: true),
+          AuthorId = table.Column<Guid>(nullable: false),
           Description = table.Column<string>(nullable: true),
           CreatedBy = table.Column<Guid>(nullable: false),
           CreatedAtUtc = table.Column<DateTime>(nullable: false),
@@ -53,7 +53,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         });
     }
 
-    private void CreateReviewsTable(MigrationBuilder migrationBuilder)
+    private void CreateTableReviews(MigrationBuilder migrationBuilder)
     {
       migrationBuilder.CreateTable(
         name: DbReview.TableName,
@@ -65,6 +65,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
           Content = table.Column<string>(nullable: false),
           IsActive = table.Column<bool>(nullable: false),
           CreatedAtUtc = table.Column<DateTime>(nullable: false),
+          ModifiedBy = table.Column<Guid>(nullable: true),
           ModifiedAtUtc = table.Column<DateTime>(nullable: true)
         },
         constraints: table =>
@@ -73,7 +74,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         });
     }
 
-    private void CreateCategoriesTable(MigrationBuilder migrationBuilder)
+    private void CreateTableCategories(MigrationBuilder migrationBuilder)
     {
       migrationBuilder.CreateTable(
         name: DbCategory.TableName,
@@ -92,7 +93,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         });
     }
 
-    private void CreateBooksCategoriesTable(MigrationBuilder migrationBuilder)
+    private void CreateTableBooksCategories(MigrationBuilder migrationBuilder)
     {
       migrationBuilder.CreateTable(
         name: DbBookCategory.TableName,
@@ -113,7 +114,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         });
     }
 
-    private void CreateBooksFilesTable(MigrationBuilder migrationBuilder)
+    private void CreateTableBooksFiles(MigrationBuilder migrationBuilder)
     {
       migrationBuilder.CreateTable(
         name: DbBookFile.TableName,
@@ -121,8 +122,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
         {
           Id = table.Column<Guid>(nullable: false),
           BookId = table.Column<Guid>(nullable: false),
-          FileId = table.Column<Guid>(nullable: false),
-          IsActive = table.Column<bool>(nullable: false),
+          FileId = table.Column<Guid>(nullable: false)
         },
         constraints: table =>
         {
@@ -134,17 +134,17 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Migrations
 
     protected override void Up(MigrationBuilder migrationBuilder)
     {
-      CreateAuthorsTable(migrationBuilder);
+      CreateTableAuthors(migrationBuilder);
 
-      CreateBooksTable(migrationBuilder);
+      CreateTableBooks(migrationBuilder);
 
-      CreateReviewsTable(migrationBuilder);
+      CreateTableReviews(migrationBuilder);
 
-      CreateCategoriesTable(migrationBuilder);
+      CreateTableCategories(migrationBuilder);
 
-      CreateBooksCategoriesTable(migrationBuilder);
+      CreateTableBooksCategories(migrationBuilder);
 
-      CreateBooksFilesTable(migrationBuilder);
+      CreateTableBooksFiles(migrationBuilder);
     }
 
     protected override void Down(MigrationBuilder migrationBuilder)

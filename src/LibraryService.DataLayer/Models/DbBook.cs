@@ -11,7 +11,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
 
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public Guid? AuthorId { get; set; }
+    public Guid AuthorId { get; set; }
     public string Description { get; set; }
     public Guid CreatedBy { get; set; }
     public DateTime CreatedAtUtc { get; set; }

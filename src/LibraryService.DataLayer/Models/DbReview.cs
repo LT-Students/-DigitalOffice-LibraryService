@@ -14,6 +14,7 @@ namespace LT.DigitalOffice.LibraryService.DataLayer.Models
     public string Content { get; set; }
     public bool IsActive { get; set; }
     public DateTime CreatedAtUtc { get; set; }
+    public DateTime ModifiedBy { get; set; }
     public DateTime? ModifiedAtUtc { get; set; }
 
     public DbBook Book { get; set; }
