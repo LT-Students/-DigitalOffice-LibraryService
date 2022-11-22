@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="$(ProjectDir)..\..\Common.Configurations.targets" />
+
+	<ItemGroup>
+	  <Folder Include="Author\" />
+	  <Folder Include="Book\" />
+	  <Folder Include="Category\" />
+	  <Folder Include="Review\" />
+	</ItemGroup>
+
+</Project>
